@@ -26,7 +26,6 @@ import GitAndIssue from './components/container/access/projectDetail/GitAndIssue
 import Setting from './components/container/access/projectDetail/Setting.vue'
 
 
-
 const routes = [
   {
     path: '/',

@@ -3,20 +3,21 @@
   <div class="container">
     <div class="real-container"> 
       <div class="left-container">
-        <router-link @click="step=0" class ="board-direction" to="/community/free">자유게시판</router-link>
-        <router-link @click="step=0" class ="board-direction" to="/community/qna">문의 게시판</router-link>
-        <button @click="step=1" class="board-direction">글 작성</button>
+        <router-link @click="step=0; category=1" class ="board-direction" to="/community/free">자유게시판</router-link>
+        <router-link @click="step=0; category=2" class ="board-direction" to="/community/qna">문의 게시판</router-link>
+        <button @click="[click(), step=1]" class="board-direction">글 작성</button>
       </div>
       <div class="input-container">
         <input type="text" class="search-input" @keyup.enter="search" v-model="key">
         <img src="@/assets/돋보기2.png">
       </div>
-    </div>
+    </div>  
     <div class="body-router">
-      <Write :step="step" />
-      <div class="router-wrapper">
-        <router-view></router-view>
-      </div>
+      <Write v-if="isOpen" 
+            :step="step" 
+            :category="category"
+            class="write"/>
+      <router-view></router-view>
     </div>
   </div>
 </div>  
@@ -30,6 +31,8 @@ export default {
     return {
       key: "",
       step : 0,
+      category : 1,
+      isOpen : false,
     }
   },
   components: {
@@ -38,6 +41,10 @@ export default {
   methods: {
     search() {
       console.log(this.key)
+    },
+    click(){
+      this.isOpen = !this.isOpen;
+      console.log(this.isOpen)
     }
   }
 }
@@ -64,6 +71,7 @@ input {
   margin-bottom: 10px;
   width: 100vm;
   height: calc(100vh - 70px);
+  overflow: hidden;
 }
 
 .real-container {
@@ -132,13 +140,4 @@ img {
   margin-bottom: 20px;
 }
 
-.body-router {
-  overflow: scroll;
-  height: calc(100vh - 100px);
-   -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-.body-router::-webkit-scrollbar {
-    display: none;
-}
 </style>

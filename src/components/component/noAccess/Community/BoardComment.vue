@@ -1,7 +1,7 @@
 <template>
   <div class="comment-input-div">
     <div class="comment-div">
-          댓글 10개
+      <button id="comment-btn">댓글 10개</button>
     </div>
     <div>
       <input class="comment-input" type="text" placeholder="댓글을 입력하세요">
@@ -30,8 +30,7 @@
       </ul>
     </div>
   </div>
-  {{count}}
-  {{step}}
+  {{board}}
 </template>
 <!--(0,5) (5,5) (10,5) ... -->
 <script>
@@ -48,6 +47,9 @@ export default {
       extraCopyList : [],
       moreComments : false,
     }
+  },
+  props : {
+    board : Object,
   },
   components : {
   },
@@ -127,5 +129,8 @@ i {
     justify-content: right;
     padding-right: 20px;
     padding-bottom: 20px;
+}
+#comment-btn {
+  color: black;
 }
 </style>
