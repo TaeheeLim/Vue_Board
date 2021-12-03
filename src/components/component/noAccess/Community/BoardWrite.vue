@@ -1,25 +1,33 @@
 <template>
     <div v-if="step==1" class="write-div">
-        <div class="editor-page" style="color: #000">
-            <ckeditor :editor="editor" 
-                        v-model="editorData" 
-                        :config="editorConfig"></ckeditor>
-            <h1>{{editorData}}</h1>
-        </div>
+        <editor-content id="tiptap" :editor="editor" />
     </div>
 </template>
 
 <script>
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Editor, EditorContent } from '@tiptap/vue-3'
+import StarterKit from '@tiptap/starter-kit'
 import { mapMutations } from 'vuex';
 
 export default {
     data() {
         return {
-            editor: ClassicEditor,
-            editorData: '<p>Content of the editor.</p>',
-            editorConfig: { }
+            editor: null,
         }
+    },
+    components : {
+        EditorContent,
+    },
+    mounted() {
+        this.editor = new Editor({
+        content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+        extensions: [
+            StarterKit,
+        ],
+        })
+    },
+    beforeUnmount() {
+        this.editor.destroy()
     },
     props : {
         step : Number,
@@ -29,16 +37,24 @@ export default {
     methods : {
         ...mapMutations({
             hello: 'community/hello'
-        })
+        }),
+        emptyEditor(){
+            this.editorData = '';
+        }
     },
 
-    mounted() {
-
-    },
 }
 </script>
 
 <style scoped>
+#tiptap {
+    color: #fff;
+    height: 200px;
+}
+.ProseMirror {
+    height : 300px;
+}
+
 
 
 </style>
