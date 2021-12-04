@@ -13,4 +13,8 @@ export default {
 </script>
 
 <style scoped>
+.board {
+    height: 100vh;
+    color: #fff;
+}
 </style>

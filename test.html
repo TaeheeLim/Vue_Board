@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    input, div, textarea {
+        font-size: 20px;
+        color: #000;
+        width: auto;
+        display: block;
+        padding: 0;
+        margin: 0;
+        border: none;
+        outline: none;
+        resize: none;
+        height: auto;
+    }
+    </style>
+</head>
+<body>
+<input type="text" value="태희" readonly>
+<textarea readonly>태희</textarea>
+<div>태희</div>
+<button id="on">modify</button>
+<button id="off">finish</button>
+
+
+<div v-if="isModify">
+
+</div>
+<div v-else>
+
+</div>
+<script>
+const btn = document.querySelector('#on')
+const btnOff = document.querySelector('#off')
+const inp = document.querySelector('input')
+
+btn.addEventListener('click', () => {
+    inp.removeAttribute('readonly')
+})
+
+btnOff.addEventListener('click', () => {
+    inp.setAttribute('readonly', true)
+})
+</script>
+</body>
+</html>

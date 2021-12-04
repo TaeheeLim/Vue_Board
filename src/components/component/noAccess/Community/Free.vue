@@ -3,24 +3,26 @@
     <div class="router-wrapper2">
         <div class="board" v-for="(item, index) in boardList" :key="index">
             <div class="name-div">
+                
                 <div>
                     <div>{{item.name}}</div>
                     <div>{{item.date}}</div>
                 </div>
-                <div class="icon-container">
-                    <div class="icon-div">
-                        <i class="fas fa-edit"></i>
+                
+                <div class="icon-container" >
+                    <div v-if="updateCheck == true" @click="Check" class="icon-div">
+                        <i @click="toUpdate" class="fas fa-edit"></i>
                     </div>
-                    <div class="icon-div">
-                        <i class="far fa-trash-alt"></i>
+                    <div v-if="updateCheck == true" class="icon-div">
+                        <i @click="deleteBoard(item)" class="far fa-trash-alt"></i>
                     </div>
+                    <!-- 밑의 div에다가 update axios를 하는 메소드 이름을 @click에다가 추가-->
+                    <div id="finish-div" v-if="updateCheck === false"
+                                        @click="finishUpdate(); Check()">Finish</div>
                 </div>
             </div>
-            <div class="content-div">
-                <div>
-                    {{item.content}}
-                </div>
-            </div>
+            <textarea class="content-div" @keyup="update"
+                                            :value="item.content" readonly></textarea>
             <BoardComment :board="item"/>
         </div>
     </div>
@@ -35,10 +37,13 @@ export default {
 
     data(){
         return {
+            updateContent : '',
+            updateCheck : true,
             axiosState : false,
             boardList : [],
             numberOfArticle : 0,
             articlesOnView : 0,
+            isUpdate : false
         }
     },
     methods: {      
@@ -67,6 +72,47 @@ export default {
                     // this.articlesOnView += e.dtaa.length
                 });
             }
+        },
+        //게시판 삭제
+        deleteBoard(item){
+            this.axios
+                .delete('', null, {params : {
+                                    board : item,
+                                    token : sessionStorage.getItem('token')}})
+                .then(e =>{
+                    console.log(e)
+            })
+        },
+        //게시판 수정
+        updateBoard(item){
+            this.axios
+                .put('',null, {params : {board : item,
+                                content : this.updateContent,
+                                token : sessionStorage.getItem('token')}})
+                .then(e => {
+                    console.log(e);
+            });
+        },
+        toUpdate(){
+            console.log('들어오니')
+            document.querySelector('textarea').removeAttribute('readonly')
+            this.isUpdate = true;
+        },
+        finishUpdate(){
+            console.log('finish로 들어오니')
+            document.querySelector('textarea').setAttribute('readonly', true)
+            this.isUpdate = false;
+        },
+        update(e){
+            if(!this.isUpdate){
+                return
+            }
+            console.log(e.target.value);
+            this.updateContent = e.target.value
+        },
+        Check(){
+            this.updateCheck = !this.updateCheck;
+            console.log("----" + this.updateCheck)
         }
     },
     mounted() {
@@ -109,11 +155,12 @@ export default {
     height: 80%;
     background-color: #2C2F3B;
     margin-bottom: 20px;
+    color:white;
     }
 .name-div {
     display: flex;
     justify-content: space-between;
-        padding-top: 10px;
+    padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -133,6 +180,20 @@ export default {
     padding-top: 10px;
     padding-bottom: 51px;
     height: 300px;
+    color: white;
+}
+textarea {
+        font-size: 15px;
+        color: #000;
+        width: 60vw;
+        display: block;
+        padding: 0;
+        margin: 0;
+        border: none;
+        outline: none;
+        resize: none;
+        height: auto;
+        background-color: #2C2F3B;
 }
 
 .router-wrapper {
@@ -143,5 +204,10 @@ export default {
 }
 .router-wrapper::-webkit-scrollbar {
     display: none;
+}
+#finish-div {
+    color: white;
+    font-weight: bold;
+    cursor : pointer;
 }
 </style>
