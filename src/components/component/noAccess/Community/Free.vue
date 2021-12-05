@@ -31,6 +31,7 @@
 
 <script>
 import BoardComment from '@/components/component/noAccess/Community/BoardComment.vue'
+import {  mapActions, mapMutations } from 'vuex'
 
 export default {
     name : 'Free',
@@ -46,7 +47,17 @@ export default {
             isUpdate : false
         }
     },
-    methods: {      
+    methods: {
+        ...mapActions({
+            getBoardList : 'community/getBoardList',
+            getBoardNum : 'community/getBoardNum'
+        }),
+
+        ...mapMutations({
+            pushToBoardList: 'community/pushToBoardList',
+            setNumberOfArticle : 'community/setNumberOfArticle'
+        }),
+
         getArticle(e){
             // if(this.articlesOnView === this.numberOfArticle) {
             //     return
@@ -117,16 +128,18 @@ export default {
     },
     mounted() {
         //0 넘겨주고
-        this.axios.get('/BoardList.json').then(e => {
-            for(let item of e.data){
-                this.boardList.push(item);
-            }
-            this.articlesOnView = this.boardList.length;
-        });
+        this.getBoardList()
+        // this.axios.get('/BoardList.json').then(e => {
+        //     for(let item of e.data){
+        //         this.boardList.push(item);
+        //     }
+        //     this.articlesOnView = this.boardList.length;
+        // });
         
-        this.axios.get('/articleNum.json').then( e=> {
-            this.numberOfArticle = e.data.articleNum;
-        });
+        this.getBoardNum()
+        // this.axios.get('/articleNum.json').then( e=> {
+        //     this.numberOfArticle = e.data.articleNum;
+        // });
     },
     components : {
         BoardComment,

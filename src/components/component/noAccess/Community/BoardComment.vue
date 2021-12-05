@@ -1,7 +1,7 @@
 <template>
   <div class="comment-input-div">
     <div class="comment-div">
-      <button id="comment-btn">댓글 10개</button>
+      <button @click="firstComments" id="comment-btn">댓글 10개</button>
     </div>
     <div>
       <input class="comment-input" type="text" placeholder="댓글을 입력하세요">
@@ -31,6 +31,9 @@
     </div>
   </div>
   {{board}}
+  {{ numberOfComments }}
+  {{ moreComments }}
+  안녕{{ this.$store.state.community.name }}
 </template>
 <!--(0,5) (5,5) (10,5) ... -->
 <script>
@@ -40,12 +43,14 @@ export default {
   name: 'BoardComment',
   data() {
     return {
+      isOpen : false,
       commentList : boardList,
       isClick: false,
-      copyList : boardList,
-      count : 0,
-      extraCopyList : [],
-      moreComments : false,
+      //해당 게시글의 총 댓글 수
+      numberOfComments : this.board.댓글.length,
+      //보여지는 댓글의 수
+      commentsOnView : 0,
+      moreComments : this.board.댓글.length === 0 ? false : true,
     }
   },
   props : {
@@ -57,12 +62,29 @@ export default {
     clicked() {
       this.isClick = true;
     },
+
     clicked2() {
       this.isClick = false;
     },
-  },
-  mounted() {
-  
+    getMoreComments(){
+
+    },
+
+    firstComments(){
+      this.isOpen = !this.isOpen
+      if(this.board.댓글.length !== 0){
+        return
+      }
+      this.getComments()
+    },
+
+    getComments() {
+      //{params : {idx : this.board.idx, number : this.commentsOnView}}
+      this.axios.get('/BoardComment.json').then(e => {
+        console.log(e)
+        // this.board.댓글.push(e.data)
+      })
+    }
   },
 }
 </script>
