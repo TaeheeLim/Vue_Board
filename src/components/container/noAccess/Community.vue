@@ -13,9 +13,11 @@
       </div>
     </div>  
     <div class="body-router">
-      <Write v-if="isOpen" 
-            :step="step" 
-            :category="category"/>
+      <div id="write-div">
+        <Write v-if="isOpen" 
+              :step="step" 
+              :category="category"/>
+      </div>
       <router-view></router-view>
     </div>
   </div>
@@ -137,6 +139,7 @@ img {
   height: 80%;
   background-color: #2C2F3B;
   margin-bottom: 20px;
+  position : relative;
 }
 
 </style>

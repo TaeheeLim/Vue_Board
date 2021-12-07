@@ -1,19 +1,17 @@
 <template>
     <!-- <div v-if="step==1" class="write-div"> -->
-        <QuillEditor :content="contents" @update:content="change" :modules="modules" theme="snow" toolbar="full">
-        </QuillEditor>
+        <editor @exportContent="getContent"/>
         <div id="write-btn">
             <button type="button" @click="insert">등록</button>
-            {{category}}
         </div>
     <!-- </div> -->
 </template>
 
 <script>
 import { mapMutations } from 'vuex';
-import { QuillEditor } from '@vueup/vue-quill';
 import ImageCompress from 'quill-image-compress';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import editor from '../../global/editor.vue'
 
 
 export default {
@@ -49,7 +47,7 @@ export default {
         category : String
     },
     components : {
-        QuillEditor,
+        editor,
     },
     //vuex 에서 함수불러올때
 
@@ -75,6 +73,9 @@ export default {
                 category : this.category
             };
             console.log(board)
+        },
+        getContent(e) {
+            console.log(e)
         }
     },
 
@@ -94,6 +95,9 @@ export default {
 #write-btn {
     padding-top: 16px;
     color: #fff;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 20px;
 }
 
 

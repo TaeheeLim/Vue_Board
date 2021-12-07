@@ -1,7 +1,7 @@
 <template>
 <div @scroll="getArticle" class="router-wrapper">
     <div class="router-wrapper2">
-        <div class="board" v-for="(item, index) in boardList" :key="index">
+        <div class="board" v-for="(item, index) in this.boardList" :key="index">
             <div class="name-div">
                 
                 <div>
@@ -9,20 +9,30 @@
                     <div>{{item.date}}</div>
                 </div>
                 
-                <div class="icon-container" >
-                    <div v-if="updateCheck == true" @click="Check" class="icon-div">
-                        <i @click="toUpdate" class="fas fa-edit"></i>
+                <div class="icon-container" v-if="item.수정했니 === false">
+                    <div class="icon-div">
+                        <i @click="this.changeBoardIsModify(item); this.changeIsUpdate(item); update(item)" class="fas fa-edit"></i>
                     </div>
-                    <div v-if="updateCheck == true" class="icon-div">
+                    <div class="icon-div">
                         <i @click="deleteBoard(item)" class="far fa-trash-alt"></i>
                     </div>
                     <!-- 밑의 div에다가 update axios를 하는 메소드 이름을 @click에다가 추가-->
-                    <div id="finish-div" v-if="updateCheck === false"
-                                        @click="finishUpdate(); Check()">Finish</div>
                 </div>
+                    <div id="finish-div" v-if="item.수정했니 === true"
+                                        @click="this.changeIsUpdate(item); this.changeBoardIsModify(item)">Finish
+                    </div>
             </div>
-            <textarea class="content-div" @keyup="update"
-                                            :value="item.content" readonly></textarea>
+            <div class="content-div" v-if="item.isModify == true">
+                {{ item.content }}
+            </div>
+            <div class="content-div" v-if="item.isModify == false">
+                <editor @exportContent="getContent" class="content-div"/>
+            </div>
+            <button @click="getCommentList(item)" class="comment-btn">댓글 {{ item.댓글수 }}개</button>
+                <div>
+                    <input class="comment-input" type="text" placeholder="댓글을 입력하세요">
+                    <button class="comment-btn">등록</button>
+                </div>
             <BoardComment :board="item"/>
         </div>
     </div>
@@ -31,7 +41,8 @@
 
 <script>
 import BoardComment from '@/components/component/noAccess/Community/BoardComment.vue'
-import {  mapActions, mapMutations } from 'vuex'
+import {  mapActions, mapMutations, mapState } from 'vuex'
+import editor from '../../global/editor.vue'
 
 export default {
     name : 'Free',
@@ -39,26 +50,33 @@ export default {
     data(){
         return {
             updateContent : '',
-            updateCheck : true,
             axiosState : false,
-            boardList : [],
+            //총 게시글 수
             numberOfArticle : 0,
+            //보여지는 게시글 수
             articlesOnView : 0,
             isUpdate : false
         }
     },
+    computed : {
+        ...mapState({
+            boardList : state=>state.community.boardList
+        })
+    },
+
     methods: {
         ...mapActions({
             getBoardList : 'community/getBoardList',
-            getBoardNum : 'community/getBoardNum'
+            getBoardNum : 'community/getBoardNum',
+            getMoreList : 'community/getMoreList',
+            getComments : 'community/getComments'
         }),
-
         ...mapMutations({
-            pushToBoardList: 'community/pushToBoardList',
-            setNumberOfArticle : 'community/setNumberOfArticle'
+            changeIsUpdate : 'community/changeIsUpdate',
+            changeBoardIsModify : 'community/changeBoardIsModify'
         }),
-
-        getArticle(e){
+        
+        getArticle(e){  
             // if(this.articlesOnView === this.numberOfArticle) {
             //     return
             // }
@@ -70,18 +88,10 @@ export default {
                 console.log(fullSroll)
                 console.log(nowScroll)
 
-                //원래는 이 부분에서 현재보여지는 게시글의 개수인 articleOnView를 같이 넘김
+                //원래는 이 부분에서 현재보여지는 게시글의 개수인 articlesOnView 같이 넘김
                 //Controller에서 보여지는 개시글의 개수를 받아서 jpa문법으로 페이징처리를 위함
                 //params : {articleNum : this.articleOnView}
-                this.axios.get('/BoardList.json').then(e => {
-                    for(let item of e.data){
-                        this.boardList.push(item);
-                    }
-                    this.articleOnView = this.boardList.length
-                    console.log(this.boardList.length)
-                    console.log(this.boardList)
-                    // this.articlesOnView += e.dtaa.length
-                });
+                this.getMoreList()
             }
         },
         //게시판 삭제
@@ -105,25 +115,16 @@ export default {
             });
         },
         toUpdate(){
-            console.log('들어오니')
-            document.querySelector('textarea').removeAttribute('readonly')
-            this.isUpdate = true;
+
         },
-        finishUpdate(){
-            console.log('finish로 들어오니')
-            document.querySelector('textarea').setAttribute('readonly', true)
-            this.isUpdate = false;
+        update(item){
+            console.log(item)
         },
-        update(e){
-            if(!this.isUpdate){
+        getCommentList(item) {
+            if(item.댓글수 <= 0) {
                 return
             }
-            console.log(e.target.value);
-            this.updateContent = e.target.value
-        },
-        Check(){
-            this.updateCheck = !this.updateCheck;
-            console.log("----" + this.updateCheck)
+            this.getComments(item)
         }
     },
     mounted() {
@@ -143,6 +144,7 @@ export default {
     },
     components : {
         BoardComment,
+        editor,
     },
 }
 </script>
@@ -222,5 +224,17 @@ textarea {
     color: white;
     font-weight: bold;
     cursor : pointer;
+}
+.comment-btn {
+    color : black;
+}
+.comment-input {
+    border-radius: 10px;
+    background-color: #414556;
+    height: 20px;
+    width: 1100px;
+    color: #FFFFFF;
+    margin-left : 80px;
+    padding-left : 14px;
 }
 </style>
