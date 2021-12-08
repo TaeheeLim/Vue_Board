@@ -1,45 +1,19 @@
 <template>
-    <!-- <div v-if="step==1" class="write-div"> -->
-        <editor @exportContent="getContent"/>
+        <editor :isExport="isExport" @exportContent="getContent"/>
         <div id="write-btn">
             <button type="button" @click="insert">등록</button>
         </div>
-    <!-- </div> -->
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-import ImageCompress from 'quill-image-compress';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import editor from '../../global/editor.vue'
-
 
 export default {
 
     name: 'App',
     data() {
         return {
-            editorData : '',
-            text : 'hello',
-            modules : {
-                module: ImageCompress,
-                options: {
-                    quality: 0.7,
-                    maxWidth: 100,
-                    maxHeight : 100,
-                    imageType: 'image/jpeg',
-                    debug: true,
-                    supressErrorLogging : false,
-                
-                }
-            },
-            contents : {
-                "ops": [
-                        {
-                        "insert": ""
-                        }
-                    ]
-            },
+            isExport: 0,
         }
     },
     props : {
@@ -49,33 +23,35 @@ export default {
     components : {
         editor,
     },
-    //vuex 에서 함수불러올때
 
     methods : {
-        ...mapMutations({
-            hello: 'community/hello'
-        }),
-        emptyEditor(){
-            this.editorData = '';
-        },
-        change(e){
-            console.log(e.ops[0].insert)
-        },
         insert(){
+            this.isExport++
+        },
+
+        exportContent(item) {
+            console.log(item)
+        },
+        
+        //게시글 insert
+        getContent(e) {
+            console.log('아아아아아앙')
             var board = {
                 //jwt에서 회원 고유번호 or Token 꺼내와서 담아주기
-                id : "",
+                idx : "",
                 //게시글 내용
-                text : this.text,
+                // text : e._data,
                 //date는 DB에서 SYSDATE로 처리
                 date : '',
                 isDelete : "N",
-                category : this.category
-            };
+                category : this.category,
+                file : e._file,
+            }
             console.log(board)
-        },
-        getContent(e) {
-            console.log(e)
+            this.axios.post('',null, { params : { data : board}}).then(e => {
+                console.log(e)
+            })
+
         }
     },
 

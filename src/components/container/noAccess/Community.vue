@@ -5,7 +5,7 @@
       <div class="left-container">
         <router-link @click="step=0; category='free'" class ="board-direction" to="/community/free">자유게시판</router-link>
         <router-link @click="step=0; category='qna'" class ="board-direction" to="/community/qna">문의 게시판</router-link>
-        <button @click="[click(), step=1]" class="board-direction">글 작성</button>
+        <button  @click="[click(), step=1, this.changeUpdateCheck()]" class="board-direction" :disabled="blockWrite == true">글 작성</button>
       </div>
       <div class="input-container">
         <input type="text" class="search-input" @keyup.enter="search" v-model="key">
@@ -26,6 +26,7 @@
 
 <script>
 import Write from '@/components/component/noAccess/Community/BoardWrite.vue';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   data(){
@@ -36,17 +37,31 @@ export default {
       isOpen : false,
     }
   },
+
   components: {
     Write,
   },
+  computed : {
+    ...mapState({
+      updateCheck : state => state.community.updateCheck,
+      blockWrite : state => state.community.blockWrite,
+    })
+  },
+
   methods: {
+    ...mapMutations({
+      changeUpdateCheck : 'community/changeUpdateCheck'
+    }),
+
     search() {
       console.log(this.key)
     },
+
     click(){
       this.isOpen = !this.isOpen;
       console.log(this.isOpen)
-    }
+    },
+
   }
 }
 </script>
@@ -112,7 +127,9 @@ input {
   height: 20px;
   width : 160px;
 }
-
+/* .left-container  {
+  margin-top: 20px;
+} */
 
 /* .board {
   width: 60vw;

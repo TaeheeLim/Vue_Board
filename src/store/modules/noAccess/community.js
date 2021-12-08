@@ -9,6 +9,7 @@ const community = {
     numberOfArticle : 0,
     articlesOnView : 0,
     content : '',
+    updateCheck : false,
   },
   
   mutations: {
@@ -78,9 +79,9 @@ const community = {
       payload.isModify = !payload.isModify
       state
     },
-    sendingNewContent(state, payload){
-      state.content = payload.content
-    }
+    changeUpdateCheck(state){
+      state.updateCheck = !state.updateCheck
+    },
   },
   
   actions: {

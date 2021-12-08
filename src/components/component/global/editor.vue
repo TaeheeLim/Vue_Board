@@ -8,7 +8,6 @@
               @click="btnClick(item.ele); getText()">
                 <i :class="item.icon"></i>
               </button>
-      
       <div class="file-box">
         <label for="upload-file">
           <i class="fa fa-file-image-o"></i>
@@ -18,17 +17,22 @@
       
       <input id="color" type="color" v-model="color">
 
-      <input type="file" class="file" @change="uploadFile">
+      <input id="multipleFiles" type="file" class="file" @change="uploadFile">
     </div>
-    <div id="content" @keyup="getText" contenteditable="true"></div>
-    <button type="button" class="export-btn" @click="exportContent">글 작성</button>
+    <div id="content" @keyup="getText" v-if="originContent" contenteditable="true" v-html="originContent.content"></div>
+    <div id="content" @keyup="getText" v-else contenteditable="true"></div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
   name: 'editor',
+
+  props: {
+    isExport: Number,
+    originContent: Object,
+  },
+
   data() {
     return {
       exportFile: '',
@@ -80,11 +84,6 @@ export default {
       ]
     }
   },
-  computed : {
-    ...mapState({
-      realContent : state => state.community.content
-    })
-  },
 
   methods: {
     btnClick(command) {
@@ -100,7 +99,10 @@ export default {
         document.execCommand(command, false, null)
       }
     },
+
     uploadFile(e) {
+      console.log('여긴 editor.vue-----')
+      console.log(e.target.files)
       const files = e.target.files
       const file = files[0]
       const maxSize = 5 * 1024 * 1024
@@ -123,29 +125,32 @@ export default {
     },
     getText() {
       this.content = document.querySelector('#content').innerHTML
-      console.log(this.content)
     },
-    exportContent() {
+    // exportContent() {
+    //   this.exportC = document.querySelector('#content').innerHTML
+    //   const returnData = {
+    //     _data: this.exportC,
+    //     _file: this.exportFile
+    //   }
+    //   this.$emit('exportContent', returnData)
+    // 
+  },
+  watch: {
+    color() {
+      this.btnClick('foreColor')
+    },
+
+    isExport() {
       this.exportC = document.querySelector('#content').innerHTML
       const returnData = {
         _data: this.exportC,
         _file: this.exportFile
       }
+      console.log(returnData)
       this.$emit('exportContent', returnData)
     },
-    givingContent(){
-      const newContent = document.querySelector('#content');
-      newContent.innerHTML = this.realContent
-    }
-  },
-  watch: {
-    color() {
-      this.btnClick('foreColor')
-    }
-  },
-  mounted () {
-    this.givingContent()
-  },
+
+  }
 }
 </script>
 
@@ -163,6 +168,8 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, .19);
   color : #fff;
   background-color: #2C2F3B;
+  width: 100%;
+  height: 100%;
 }
 .text-editor-header {
   background: black;
