@@ -10,6 +10,7 @@ import QnA from './components/component/noAccess/Community/QnA.vue'
 
 import Sign from './components/container/noAccess/Sign.vue'
 import Projects from './components/container/access/Projects.vue'
+import ProjectsList from './components/component/acess/projects/ProjectList.vue'
 
 import ProjectDetail from './components/container/access/projectDetail/ProjectDetail.vue'
 import DashBoard from './components/container/access/projectDetail/DashBoard.vue'
@@ -30,6 +31,10 @@ const routes = [
   {
     path: '/',
     component: Home,
+  },
+  {
+    path: '/projectslist',
+    component: ProjectsList,
   },
   {
     path: '/community',

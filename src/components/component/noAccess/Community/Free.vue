@@ -228,7 +228,6 @@ export default {
     height: 100%;
 }
 
-
 .router-wrapper {
     overflow: scroll;
     height: calc(100vh - 100px);
