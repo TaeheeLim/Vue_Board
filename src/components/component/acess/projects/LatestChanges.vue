@@ -5,19 +5,19 @@
 <div id="change-list" @mousewheel="wheel">
     <div class="list-detail" v-for="(a,i) in 50" :key="i">
         <div class="list-wrapper">
-            <div class="content">
+            <router-link id="prjct-name" to="">
                 Test Project
+            </router-link>
+            <div class="content-children">
+                <router-link to="">Issue</router-link>
+                <router-link to="">치명적인 버그 발견!</router-link>
+                <router-link to="">치명적인 버그 발견!</router-link>
             </div>
-            <div class="content">
-                <div>Issue</div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="content">
-                <div>Schedule</div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="content-children">
+                <router-link to="">Schedule</router-link>
+                <router-link to="">21-01-01 신년회</router-link>
+                <router-link to="">21-01-01 신년회</router-link>
+                <router-link to="">21-01-01 신년회</router-link>
             </div>
         </div>
     </div>
@@ -25,21 +25,6 @@
 </template>
 
 <script>
-// const container = document.querySelector('#change-list');
-// let offset = 0;
-// container
-// window.addEventListener('wheel', (e) => {
-//     offset += Math.sign(e.deltaY) * 60;
-//     console.log(e)
-//     console.log(offset)
-//     if (offset < 0) {
-//         offset = 0;
-//     } else if (offset > 10000 - window.innerWidth) {
-//         offset = 10000 - window.innerWidth;
-//     }
-    
-//     // container.style.transform = `translateX(-${offset}px`;
-// });
 export default {
     name : 'LatestChanges',
     data() {
@@ -57,10 +42,12 @@ export default {
         //가로 스크롤 ^^
         wheel(e){
             let target = document.querySelector('#change-list')
+            
+            var a = target.scrollWidth - (target.scrollLeft + target.offsetWidth)
 
             let wheelDelta = e.wheelDelta;
-
-            if(wheelDelta > 0 && target.offsetWidth + target.scrollLeft < target.scrollWidth){
+            target.scroll
+            if(wheelDelta > 0 && a + target.offsetWidth < target.scrollWidth){
                 console.log("여기 왼쪽 맞지")
                 target.scrollLeft = (wheelDelta * this.countLeft);
                 this.countLeft--;
@@ -86,6 +73,12 @@ export default {
     margin-top: 30px;
     gap: 60px;
     overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#change-list::-webkit-scrollbar {
+    display: none;
 }
 
 .list-detail {
@@ -95,17 +88,75 @@ export default {
     font-size: 20px;
     background-color: #2C2F3B;
     padding: 10px;
+    transition: ease-in-out 0.3s;
     
 }
 
-.list-detail > div:first-child {
+.list-wrapper > div:first-child {
     border-bottom: 1px solid #717790;
     color: #717790;
+    padding-bottom: 10px;
+    font-size: 22px;
+}
+
+.list-wrapper > div:nth-child(2){
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .list-wrapper {
     width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
+.content-children {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#prjct-name {
+    border-bottom: 1px solid #717790;
+    padding-bottom: 10px;
+}
+
+.content-children > a:first-child{
+    font-size: 18px;
+}
+
+.content-children > a:nth-child(2){
+    font-size : 15px;
+    padding-left: 10px;
+}
+
+.content-children > a:nth-child(3){
+    font-size : 15px;
+    padding-left: 10px;
+}
+
+.content-children > a:last-child{
+    font-size : 15px;
+    padding-left: 10px;
+}
+
+a{
+    color: #717790;
+}
+
+.list-detail:hover {
+    background-color: black;
+}
+
+.list-detail:hover a {
+    color:#fff;
+}
+
+.list-detail:hover #prjct-name {
+    border-bottom: 1px solid darkorchid;
+}
+
+
 
 </style>

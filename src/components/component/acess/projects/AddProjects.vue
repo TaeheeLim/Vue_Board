@@ -1,22 +1,20 @@
 <template>
     <div class="container">
         <ul class="item-list">
-            <li id="firstLi" class="list-item btn">
-                <router-link to="/community/free">
+            <li @click="makeElement" id="firstLi" class="list-item btn">
                     <div id="divdiv">
                         <i class="fas fa-plus-circle"></i>
                     </div>
-                </router-link>
             </li>
-            <li class="list-item" v-for="item in 30" :key="item">
-                <router-link @mouseover="selectProject" :to="`/access/project/${item.project_name}`">
+            <li class="list-item" v-for="item in projectsList" :key="item">
+                <router-link :to="`/access/project/${item.project_name}`">
                     <div class="detail">
-                        <div>project name</div>
+                        <div class="prjct-name">{{ item.name }}</div>
                         <div>
-                            <span>기간: 2021-01-01 ~ 2021~02~01</span>
-                            <span>진행도: 50%</span>
+                            <span>기간: {{ item.startDate }} ~ {{ item.endDate }}</span>
+                            <span>진행도: {{ item.progress }}</span>
                         </div>
-                        <div>팀장: kade</div>
+                        <div>팀장: {{ item.PL}}</div>
                     </div>
                 </router-link>
             </li>
@@ -29,17 +27,30 @@ export default {
     name : 'AddProjects',
     data() {
         return {
+            projectsList : [],
             
         }
     },
     methods: {
-        selectProject(){}    
+        getProjects(){
+            this.axios.get('/projectDetail.json').then(e => {
+                this.projectsList = e.data
+            })
+        },
+        makeElement(){
+            // var li = document.createElement('li')
+        },
+    },
+    mounted() {
+        this.getProjects()
     },
 
 }
 </script>
 
 <style scoped>
+
+
 .container {
     /* border: 1px solid #fff; */
     height: 100%;
@@ -67,6 +78,7 @@ export default {
     background-color: #2C2F3B;
     border-radius: 6px;
     padding: 10px;
+    transition: ease-in-out 0.3s;
 }
 .detail {
     color : #717790;
@@ -85,15 +97,18 @@ export default {
 .detail > div:nth-child(3) {
     padding-top: 10px;
 }
+
 .btn {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 30px;
 }
+
 a {
     color: white;
 }
+
 #firstLi > a:nth-child(1) {
     width: 100%;
     height: 100%;
@@ -101,4 +116,23 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+li:hover {
+    background-color: black;
+}
+
+li:hover .detail {
+    color: white;
+}
+
+li:hover .prjct-name {
+    border-bottom: 1px solid darkorchid;
+}
+
+/* .detail:hover {
+    color: white;
+} */
+
+
+
 </style>

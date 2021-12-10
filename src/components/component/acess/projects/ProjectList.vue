@@ -67,13 +67,25 @@ export default {
     name : 'ProjectList',
     data() {
         return {
-            
+            projectList : [],
+            projectList : [],
+        }
+    },
+    methods: {
+        getProjectsList(){
+            this.axios.get('/projectDetail.json').then(e => {
+                this.projectList = e.data
+            })
+
         }
     },
     components : {
         AddProjects,
         Changes,
-    }
+    },
+    mounted() {
+
+    },
 }
 </script>
 
