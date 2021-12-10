@@ -54,17 +54,18 @@ export default {
         
     },
     methods: {
+        //가로 스크롤 ^^
         wheel(e){
             let target = document.querySelector('#change-list')
 
             let wheelDelta = e.wheelDelta;
-            console.log(wheelDelta)
-            if(wheelDelta > 0){
+
+            if(wheelDelta > 0 && target.offsetWidth + target.scrollLeft < target.scrollWidth){
                 console.log("여기 왼쪽 맞지")
                 target.scrollLeft = (wheelDelta * this.countLeft);
                 this.countLeft--;
                 this.countRight++;
-            } else {
+            } else if (wheelDelta < 0 && target.offsetWidth + target.scrollLeft < target.scrollWidth) {
                 target.scrollLeft = (wheelDelta * this.countRight);
                 this.countRight--;
                 this.countLeft++;
@@ -104,7 +105,7 @@ export default {
 }
 
 .list-wrapper {
-    width: 100px;
+    width: 180px;
 }
 
 </style>
