@@ -1,145 +1,897 @@
 [{
-    "idx" : 1,
+    "prjctIdx" : 1,
     "name" : "Project 1",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "N",
-    "PL" : "안대근"
+    "PL" : "안대근",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 2,
+    "prjctIdx" : 2,
     "name" : "Project 2",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "N",
-    "PL" : "유영진"
+    "PL" : "유영진",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 3,
+    "prjctIdx" : 3,
     "name" : "Project 3",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "N",
-    "PL" : "권영채"
+    "PL" : "권영채",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 4,
+    "prjctIdx" : 4,
     "name" : "Project 4",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "N",
-    "PL" : "윤주원"
+    "PL" : "윤주원",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 5,
+    "prjctIdx" : 5,
     "name" : "Project 5",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "N",
-    "PL" : "임태희"
+    "PL" : "임태희",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 6,
+    "prjctIdx" : 6,
     "name" : "Project 6",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "N",
-    "PL" : "임창균"
+    "PL" : "임창균",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 7,
+    "prjctIdx" : 7,
     "name" : "Project 7",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "N",
-    "PL" : "유제면"
+    "PL" : "유제면",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 8,
+    "prjctIdx" : 8,
     "name" : "Project 8",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "구현수"
+    "PL" : "구현수",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 9,
+    "prjctIdx" : 9,
     "name" : "Project 9",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "이준석"
+    "PL" : "이준석",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 10,
+    "prjctIdx" : 10,
     "name" : "Project 10",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "이인환"
+    "PL" : "이인환",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 11,
+    "prjctIdx" : 11,
     "name" : "Project 11",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "이나영"
+    "PL" : "이나영",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 12,
+    "prjctIdx" : 12,
     "name" : "Project 12",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "조원혜"
+    "PL" : "조원혜",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 13,
+    "prjctIdx" : 13,
     "name" : "Project 13",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "봉현민"
+    "PL" : "봉현민",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 14,
+    "prjctIdx" : 14,
     "name" : "Project 15",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "유제이"
+    "PL" : "유제이",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 15,
+    "prjctIdx" : 15,
     "name" : "Project 15",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "한주연"
+    "PL" : "한주연",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 },{
-    "idx" : 16,
+    "prjctIdx" : 16,
     "name" : "Project 16",
     "startDate" : "2021-12-10",
     "endDate" : "2021-12-13",
     "progress" : "70%",
     "isDelete" : "N",
     "isComplete" : "Y",
-    "PL" : "강주희"
+    "PL" : "강주희",
+    "issue" : [
+        {
+            "issueIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 2,
+            "content" : "버그 있어요 확인점요 ㅋㅋ",
+            "date" : "2021-05-12",
+            "state" : "버그"
+        },
+        {
+            "issueIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 4,
+            "content" : "동작이 아모고토 안됩니다",
+            "date" : "2021-03-23",
+            "state" : "버그"
+        }
+    ],
+    "schedule" : [
+        {
+            "calIdx" : 1,
+            "prjctIdx" : 1,
+            "memIdx" : 23,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 2,
+            "prjctIdx" : 1,
+            "memIdx" : 21,
+            "startDate" : "2021-06-24",
+            "endDate" : "2021-07-12",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 목요일 회식 있습니다."
+        },
+        {
+            "calIdx" : 3,
+            "prjctIdx" : 1,
+            "memIdx" : 22,
+            "startDate" : "2021-04-12",
+            "endDate" : "2021-04-15",
+            "content" : "장소는 추후 공지.",
+            "title" : "금주 금요일 회식 있습니다."
+        }
+    ]
 }]

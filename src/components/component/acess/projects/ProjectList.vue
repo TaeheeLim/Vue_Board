@@ -12,16 +12,16 @@
         <div id="profile-list">
             <div>
                 <div>
-                    Proceddings()
+                    Proceddings( {{ progressList.length }} )
                 </div>
                 <div class="projects-div-ul">
                     <ul class="projects-ul">
-                        <li v-for="i in 10" :key="i">
+                        <li v-for="item in progressList" :key="item">
                             <span>
                                 <i class="far fa-circle"></i>
                             </span>
                             <span class="test-span">
-                                <router-link to="/community/free">test1</router-link>
+                                <router-link to="/community/free">{{item.name}}</router-link>
                             </span>
                         </li>
                     </ul>
@@ -29,17 +29,17 @@
             </div>
             <div>
                 <div class="project-completed">
-                    Completed()
+                    Completed( {{ completeList.length }} )
                 </div>
                 <div class="projects-div-ul">
                     <div>
                         <ul class="projects-ul">
-                            <li v-for="i in 10" :key="i">
+                            <li v-for="item in completeList" :key="item">
                                 <span>
                                     <i class="far fa-circle"></i>
                                 </span>
                                 <span class="test-span">
-                                    <router-link to="/community/free">test1</router-link>
+                                    <router-link to="/community/free">{{ item.name }}</router-link>
                                 </span>
                             </li>
                         </ul>
@@ -68,15 +68,25 @@ export default {
     data() {
         return {
             projectList : [],
-            projectList : [],
+            progressList : [],
+            completeList : [],
         }
     },
     methods: {
         getProjectsList(){
             this.axios.get('/projectDetail.json').then(e => {
                 this.projectList = e.data
+                
+                for(let i = 0; i < this.projectList.length; i++){
+                    if(this.projectList[i].isComplete === "N"){
+                        this.progressList.push(this.projectList[i])
+                    } else {
+                        this.completeList.push(this.projectList[i])
+                    }
+                }
+                console.log(this.progressList)
+                console.log(this.completeList)
             })
-
         }
     },
     components : {
@@ -84,7 +94,7 @@ export default {
         Changes,
     },
     mounted() {
-
+        this.getProjectsList()
     },
 }
 </script>
